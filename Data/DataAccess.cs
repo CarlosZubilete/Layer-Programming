@@ -13,7 +13,35 @@ namespace Data
     private readonly String connectingString_DBNeptuno = @"Data Source=DESKTOP-LFTFVP5\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True"; // this should be in Web.Config.
     // private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBNeptuno"].ConnectionString;
     public DataAccess() { }
+    public int GetMax(String query)
+    {
+      int max = 0;
+      SqlConnection connection = GetConnection();
+      SqlCommand command = new SqlCommand(query, connection);
+      
+      SqlDataReader reader = command.ExecuteReader();
+      if(reader.Read())
+      {
+        max = Convert.ToInt32(reader[0].ToString());
+      }
 
+      return max;
+    }
+    public Boolean IsExists(String query)
+    {
+      Boolean state = false;
+      SqlConnection connection = GetConnection();
+      SqlCommand command = new SqlCommand(query, connection);
+
+      SqlDataReader reader = command.ExecuteReader();
+
+      if (reader.Read())
+      {
+        state = true;
+      }
+
+      return state;
+    }
     public DataTable GetDataTable(String nameTable, String querySql)
     {
       using (SqlConnection connection = GetConnection())
@@ -40,7 +68,7 @@ namespace Data
         {
           if (connection == null) return -1;
 
-          connection.Open(); // Maybe this could be avoid.
+          // connection.Open(); // Maybe this could be avoid.
 
           command.Connection = connection;
           command.CommandType = CommandType.StoredProcedure;  // Indico el tipo de procedimiento

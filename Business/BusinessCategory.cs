@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using Data;
-
+using Entities;
 
 namespace Business
 {
@@ -18,5 +18,23 @@ namespace Business
       return dao.GetTableCategory();
     }
 
+    public bool AddCategory(String nameCategory)
+    {
+      int cantRows = 0;
+      Category category = new Category();
+      category.setName(nameCategory);
+
+      DaoCategory dao = new DaoCategory();
+      
+      if (!dao.IsCategoryRepeat(category))
+      {
+        cantRows = dao.AddCategory(category);
+      }
+
+      if (cantRows == 1)
+        return true;
+      else
+        return false;
+    }
   }
 }

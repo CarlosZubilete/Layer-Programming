@@ -13,10 +13,10 @@
     <div class="lookupCategorias">
       <span class="lookupCategorias__texto">Nombre de Categoria</span>
       <asp:TextBox ID="txtCategorias" runat="server" CssClass="lookupCategorias__input"></asp:TextBox>
-      <asp:Button ID="btnCategorias" runat="server" Text="Buscar" CssClass="lookupCategorias__btn" />
+      <asp:Button ID="btnCategorias" runat="server" Text="Agregar" CssClass="lookupCategorias__btn" OnClick="btnCategorias_Click" />
       <%-- VALIDADORES --%>
       <%--<asp:RegularExpressionValidator ID="regexOnlyCharacter" runat="server" ControlToValidate="txtSucursales" ValidationExpression="^[a-zA-Z\s]+$"></asp:RegularExpressionValidator>--%>
-      <asp:Label ID="lblShowError" runat="server" Text=""></asp:Label>
+      <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
     </div>
     <%-- GRID-VIEW --%>
     <div>
