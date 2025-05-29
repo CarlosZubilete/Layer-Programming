@@ -13,21 +13,21 @@ namespace Data
     private readonly String connectingString_DBNeptuno = @"Data Source=DESKTOP-LFTFVP5\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True"; // this should be in Web.Config.
     // private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBNeptuno"].ConnectionString;
     public DataAccess() { }
-    public int GetMax(String query)
+    public int GetMaxCategoryId(String query)
     {
       int max = 0;
       SqlConnection connection = GetConnection();
       SqlCommand command = new SqlCommand(query, connection);
-      
+
       SqlDataReader reader = command.ExecuteReader();
-      if(reader.Read())
+      if (reader.Read())
       {
         max = Convert.ToInt32(reader[0].ToString());
       }
 
       return max;
     }
-    public Boolean IsExists(String query)
+    public Boolean RecordExists(String query)
     {
       Boolean state = false;
       SqlConnection connection = GetConnection();
@@ -60,7 +60,7 @@ namespace Data
         }
       }
     }
-    public int ExecuteNoQuery(SqlCommand command, String storedProcedure)
+    public int ExecuteStoredProcedure(SqlCommand command, String storedProcedure)
     {
       try
       {
@@ -71,9 +71,9 @@ namespace Data
           // connection.Open(); // Maybe this could be avoid.
 
           command.Connection = connection;
-          command.CommandType = CommandType.StoredProcedure;  // Indico el tipo de procedimiento
-          command.CommandText = storedProcedure; // Nombre del procedimiento o query
-          return command.ExecuteNonQuery(); // Ejecuto el procedimiento 
+          command.CommandType = CommandType.StoredProcedure;  // Indico el tipo de procedimiento.
+          command.CommandText = storedProcedure; // Nombre del procedimiento o query.
+          return command.ExecuteNonQuery(); // Ejecuto el procedimiento y retorna las filas afectadas.
         }
       }
       catch (SqlException ex)

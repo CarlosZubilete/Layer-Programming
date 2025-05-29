@@ -13,13 +13,11 @@ namespace Entities
     private String _description;
     //  private String _urlImg;
     public Category() { }
-
     public int Id
     {
-      get{ return _id;}
-      set{ _id = value;}
+      get { return _id; }
+      set { _id = value; }
     }
-
     public String Name
     {
       get { return _name; }
@@ -30,8 +28,14 @@ namespace Entities
       get { return _description; }
       set { _description = value; }
     }
+
   }
 }
+/*
+    public int Id { get; set; } // this field 'Category._id never used'
+    public String Name { get; set; }
+    public String Description { get; set; }
+*/
 
 /*
     public int getId()

@@ -12,21 +12,26 @@ namespace Business
   public class BusinessCategory
   {
     public BusinessCategory() { }
-    public DataTable GetTable()
+    public Category GetCategory(int id)
+    {
+      Category category = new Category { Id = id };
+      //category.Id = id;
+      DaoCategory dao = new DaoCategory();
+      return dao.GetCategoryById(category);
+    }
+    public DataTable GetAllCategories()
     {
       DaoCategory dao = new DaoCategory();
-      return dao.GetTableCategory();
+      return dao.GetAllCategories();
     }
 
     public bool AddCategory(String nameCategory)
     {
       int cantRows = 0;
-      Category category = new Category();
-      //category.Name(nameCategory);
-      category.Name = nameCategory;
+      Category category = new Category { Name = nameCategory };
       DaoCategory dao = new DaoCategory();
-      
-      if (!dao.IsCategoryRepeat(category))
+
+      if (!dao.IsCategoryDuplicate(category))
       {
         cantRows = dao.AddCategory(category);
       }

@@ -23,7 +23,7 @@ namespace View
     }
     private void GridCartegorias_Load()
     {
-      DataTable tableCategorias = _business.GetTable();
+      DataTable tableCategorias = _business.GetAllCategories();
       gridCategorias.DataSource = tableCategorias;
       gridCategorias.DataBind();
     }
@@ -42,11 +42,11 @@ namespace View
       state = _business.AddCategory(inputName);
       if (state)
       {
-        lblMessage.Text = $"Categoría agregada con exito";
+        lblMessage.Text = $"Category added successfully.";
       }
       else
       {
-        lblMessage.Text = $"Could not add category.";
+        lblMessage.Text = $"Category's been in Database.";
       }
       // Reloading the gridSucursales:
       this.GridCartegorias_Load();
@@ -55,5 +55,5 @@ namespace View
   }
 }
 
-// TODO: Changed the function name . All ingles
-// TODO: Ask why use Object String to string
+// TODO: Create a interface for : Delelte category, find Category by Id and retur everything.
+// TODO: 
