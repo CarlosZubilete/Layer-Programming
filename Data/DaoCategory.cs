@@ -11,14 +11,14 @@ namespace Data
 {
   public class DaoCategory
   {
+    private readonly DataAccess _dataAccess = new DataAccess();
     // D.A.O : Data Access Object
     public DaoCategory() { }
 
-    DataAccess dataAccess = new DataAccess();
 
     public DataTable GetTableCategory()
     {
-      DataTable dataTable = dataAccess.GetDataTable("Categoria", "SELECT * FROM Categorías");
+      DataTable dataTable = _dataAccess.GetDataTable("Categoria", "SELECT * FROM Categorías");
       return dataTable;
     }
 
@@ -26,16 +26,18 @@ namespace Data
     public Boolean IsCategoryRepeat(Category category)
     {
       //String query = "SELECT * FROM Categorías WHERE NombreCategoría = " + category.getName();
-      String query = $"SELECT * FROM Categorías WHERE NombreCategoría = '{category.getName()}'";
-      return dataAccess.IsExists(query);
+      //String query = $"SELECT * FROM Categorías WHERE NombreCategoría = '{category.getName()}'";
+      String query = $"SELECT * FROM Categorías WHERE NombreCategoría = '{category.Name}'";
+      return _dataAccess.IsExists(query);
     }
 
     public int AddCategory(Category category)
     {
-      category.setId(dataAccess.GetMax("SELECT max(IdCategoría) FROM Categorías") + 1 );
+      //category.setId(dataAccess.GetMax("SELECT max(IdCategoría) FROM Categorías") + 1 );
+      category.Id = _dataAccess.GetMax("SELECT max(IdCategoría) FROM Categorías") + 1; 
       SqlCommand command = new SqlCommand();
       this.ArmarParametrosCategoriasAgregar(ref command, category);
-      return dataAccess.ExecuteNoQuery(command, "spAgregarCategoria");
+      return _dataAccess.ExecuteNoQuery(command, "spAgregarCategoria");
     }
 
     private void ArmarParametrosCategoriasAgregar(ref SqlCommand command , Category category)
@@ -43,10 +45,12 @@ namespace Data
       SqlParameter parameter = new SqlParameter();
       
       parameter = command.Parameters.Add("@IDCATEGORIA", SqlDbType.Int);
-      parameter.Value = category.getId();
+      //parameter.Value = category.getId();
+      parameter.Value = category.Id;
 
       parameter = command.Parameters.Add("@NOMBRECAT", SqlDbType.VarChar);
-      parameter.Value = category.getName();
+      //parameter.Value = category.getName();
+      parameter.Value = category.Name;
     }
 
     /*

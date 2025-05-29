@@ -13,6 +13,27 @@ namespace Entities
     private String _description;
     //  private String _urlImg;
     public Category() { }
+
+    public int Id
+    {
+      get{ return _id;}
+      set{ _id = value;}
+    }
+
+    public String Name
+    {
+      get { return _name; }
+      set { _name = value; }
+    }
+    public String Description
+    {
+      get { return _description; }
+      set { _description = value; }
+    }
+  }
+}
+
+/*
     public int getId()
     {
       return _id;
@@ -37,31 +58,4 @@ namespace Entities
     {
       _description = description;
     }
-
-    /*
-      public int Id
-      {
-        get
-        {
-          return _id;
-        }
-        set
-        {
-          _id = value;
-        }
-      }
-
-      public string Name
-      {
-        get
-        {
-          return _name;
-        }
-        set
-        {
-          _name = value;
-        }
-      }
-     */
-  }
-}
+ */

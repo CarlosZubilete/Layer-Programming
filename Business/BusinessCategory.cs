@@ -22,8 +22,8 @@ namespace Business
     {
       int cantRows = 0;
       Category category = new Category();
-      category.setName(nameCategory);
-
+      //category.Name(nameCategory);
+      category.Name = nameCategory;
       DaoCategory dao = new DaoCategory();
       
       if (!dao.IsCategoryRepeat(category))
