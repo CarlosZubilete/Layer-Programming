@@ -10,18 +10,18 @@ namespace Data
 {
   class DataAccess
   {
-    private readonly String connectingString_DBNeptuno = @""; // this should be in Web.Config.
+    private readonly String connectingString_DBNeptuno = @"Data Source=DESKTOP-LFTFVP5\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True"; // this should be in Web.Config.
     // private readonly string connectionString = ConfigurationManager.ConnectionStrings["DBNeptuno"].ConnectionString;
     public DataAccess() { }
 
-    public DataTable GetDataTable(String nameTable, String Sql)
+    public DataTable GetDataTable(String nameTable, String querySql)
     {
       using (SqlConnection connection = GetConnection())
       {
         try
         {
           DataSet dataSet = new DataSet();
-          SqlDataAdapter dataAdapter = GetDataAdapter(Sql, connection);
+          SqlDataAdapter dataAdapter = GetDataAdapter(querySql, connection);
           dataAdapter.Fill(dataSet, nameTable);
           return dataSet.Tables[nameTable];
         }
