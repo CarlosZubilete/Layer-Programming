@@ -14,6 +14,10 @@ namespace Data
     private readonly DataAccess _dataAccess = new DataAccess();
    
     public DaoCategory() { }
+    public int GetMaxCategoryId( )
+    {
+      return _dataAccess.GetMaxCategoryId("SELECT max(IdCategoría) FROM Categorías");
+    }
     public Category GetCategoryById(Category category)
     {
       DataTable dataTable = _dataAccess.GetDataTable("Categoria", "SELECT * FROM Categorías WHERE IdCategoría = " + category.Id);

@@ -12,6 +12,11 @@ namespace Business
   public class BusinessCategory
   {
     public BusinessCategory() { }
+    public int GetMaxCategory()
+    {
+      DaoCategory dao =new DaoCategory();
+      return dao.GetMaxCategoryId();
+    }
     public Category GetCategory(int id)
     {
       Category category = new Category { Id = id };
@@ -24,7 +29,7 @@ namespace Business
       DaoCategory dao = new DaoCategory();
       return dao.GetAllCategories();
     }
-
+   
     public bool AddCategory(String nameCategory)
     {
       int cantRows = 0;

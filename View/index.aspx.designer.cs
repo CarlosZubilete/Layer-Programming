@@ -24,22 +24,22 @@ namespace View
     protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
     /// <summary>
-    /// txtCategorias control.
+    /// txtAddCategorias control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtCategorias;
+    protected global::System.Web.UI.WebControls.TextBox txtAddCategorias;
 
     /// <summary>
-    /// btnCategorias control.
+    /// btnAddCategorias control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnCategorias;
+    protected global::System.Web.UI.WebControls.Button btnAddCategorias;
 
     /// <summary>
     /// lblMessage control.
@@ -58,5 +58,59 @@ namespace View
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.GridView gridCategorias;
+
+    /// <summary>
+    /// TxtLookupCategory control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox TxtLookupCategory;
+
+    /// <summary>
+    /// BtnLookupCategory control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button BtnLookupCategory;
+
+    /// <summary>
+    /// lblLookupCategoryMsg control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblLookupCategoryMsg;
+
+    /// <summary>
+    /// lblLookupCategoryId control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblLookupCategoryId;
+
+    /// <summary>
+    /// lblLookupCategoryName control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblLookupCategoryName;
+
+    /// <summary>
+    /// lblLookupCategoryDescription control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblLookupCategoryDescription;
   }
 }

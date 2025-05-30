@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 using Business;
 using System.Data;
-
+using Entities;
 
 namespace View
 {
@@ -28,11 +28,11 @@ namespace View
       gridCategorias.DataBind();
     }
 
-    protected void BtnCategorias_Click(object sender, EventArgs e)
+    protected void BtnAddCategorias_Click(object sender, EventArgs e)
     {
       Boolean state;
 
-      String inputName = txtCategorias.Text.Trim();
+      String inputName = txtAddCategorias.Text.Trim();
       if (String.IsNullOrEmpty(inputName))
       {
         lblMessage.Text = $"Please enter a category name";
@@ -50,7 +50,35 @@ namespace View
       }
       // Reloading the gridSucursales:
       this.GridCartegorias_Load();
-      txtCategorias.Text = string.Empty;
+      txtAddCategorias.Text = string.Empty;
+    }
+
+    protected void BtnLookupCategory_Click(object sender, EventArgs e)
+    {
+      //Boolean state;
+      String inputNumber = TxtLookupCategory.Text.Trim();
+
+      if (String.IsNullOrEmpty(inputNumber))
+      {
+        lblLookupCategoryMsg.Text = $"Please enter a category Id";
+        return;
+      }
+
+
+      if (Convert.ToInt32(inputNumber) > _business.GetMaxCategory() || Convert.ToInt32(inputNumber) < 1)
+      {
+        lblLookupCategoryMsg.Text = $"Category is not in DataBase";
+        return;
+      }
+
+      Category category;
+      category = _business.GetCategory(Convert.ToInt32(inputNumber));
+
+      lblLookupCategoryId.Text = $"Id: {category.Id} ";
+      lblLookupCategoryName.Text = $"Name: {category.Name}";
+      lblLookupCategoryDescription.Text = $"Description:  {category.Description}";
+
+
     }
   }
 }
