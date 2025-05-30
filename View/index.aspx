@@ -46,7 +46,16 @@
 
     <%-- DELETE CATEGORY --%>
     <h3>Delete category by ID</h3>
-
+    <div class="DeleteCategoty">
+      <span class="DeleteCategoty__text">Lookup Category</span>
+      <asp:TextBox ID="txtDeleteCategory" runat="server" CssClass="DeleteCategoty__input"></asp:TextBox>
+      <asp:Button ID="bntDeleteCategory" runat="server" Text="Delete" CssClass="DeleteCategoty__btn" OnClick="DeleteCategotyCategory_Click"/>
+      <%-- VALIDADORES --%>
+      <%--<asp:RegularExpressionValidator ID="regexOnlyCharacter" runat="server" ControlToValidate="txtSucursales" ValidationExpression="^[a-zA-Z\s]+$"></asp:RegularExpressionValidator>--%>
+      <asp:Label ID="lblShowDeleteError" runat="server" Text=""></asp:Label>
+    </div>
+    <br />
+      <asp:Label ID="lblShowDelete" runat="server" Text=""></asp:Label>
   </form>
 </body>
 </html>

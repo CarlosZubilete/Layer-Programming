@@ -63,8 +63,6 @@ namespace View
         lblLookupCategoryMsg.Text = $"Please enter a category Id";
         return;
       }
-
-
       if (Convert.ToInt32(inputNumber) > _business.GetMaxCategory() || Convert.ToInt32(inputNumber) < 1)
       {
         lblLookupCategoryMsg.Text = $"Category is not in DataBase";
@@ -77,11 +75,29 @@ namespace View
       lblLookupCategoryId.Text = $"Id: {category.Id} ";
       lblLookupCategoryName.Text = $"Name: {category.Name}";
       lblLookupCategoryDescription.Text = $"Description:  {category.Description}";
+    }
+    protected void DeleteCategotyCategory_Click(object sender, EventArgs e)
+    {
+      String inputNumber = txtDeleteCategory.Text.Trim();
 
+      if (String.IsNullOrEmpty(inputNumber))
+      {
+        lblShowDeleteError.Text = $"Please enter a category Id";
+        return;
+      }
+      if (Convert.ToInt32(inputNumber) > _business.GetMaxCategory() || Convert.ToInt32(inputNumber) < 1)
+      {
+        lblShowDeleteError.Text = $"Category is not in DataBase";
+        return;
+      }
 
+      if(_business.DeleteCategory(Convert.ToInt32(inputNumber)))
+      {
+        lblShowDelete.Text = $"Category deleted successfully";
+        this.GridCartegorias_Load();
+        txtDeleteCategory.Text = string.Empty;
+      }
     }
   }
 }
 
-// TODO: Create a interface for : Delelte category, find Category by Id and retur everything.
-// TODO: 

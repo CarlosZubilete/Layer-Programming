@@ -46,5 +46,20 @@ namespace Business
       else
         return false;
     }
+
+    public bool DeleteCategory(int id)
+    {
+      int cantRows;
+      Category category = new Category { Id = id };
+      DaoCategory dao = new DaoCategory();
+
+      cantRows = dao.DeteleCategory(category);
+
+      if (cantRows == 1)
+        return true;
+      else
+        return false;
+
+    }
   }
 }
